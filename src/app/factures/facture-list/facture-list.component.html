@@ -1,0 +1,38 @@
+<div>
+  <h1>Gestion des Factures</h1>
+
+  <!-- Recherche -->
+  <input
+    type="text"
+    [(ngModel)]="searchQuery"
+    placeholder="Rechercher par nom du client"
+    (input)="searchFactures()"
+  />
+
+  <!-- Tableau des factures -->
+  <table>
+    <thead>
+    <tr>
+      <th>Nom du Client</th>
+      <th>Description</th>
+      <th>Montant</th>
+      <th>Date</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let facture of factures">
+      <td>{{ facture.clientName }}</td>
+      <td>{{ facture.description }}</td>
+      <td>{{ facture.amount }}</td>
+      <td>{{ facture.date | date: 'short' }}</td>
+      <td>
+        <button (click)="deleteFacture(facture.id)">Supprimer</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Ajouter une facture -->
+  <button (click)="addFacture()">Ajouter une Facture Exemple</button>
+</div>

@@ -1,0 +1,36 @@
+<div *ngIf="album" class="container py-5">
+  <!-- Titre de l'album -->
+  <div class="text-center mb-4">
+    <h1 class="display-4">{{ album.title }}</h1>
+  </div>
+
+  <div class="row justify-content-center">
+    <!-- Image de l'album -->
+    <div class="col-md-6">
+      <img
+        [src]="album.imagePath"
+        alt="{{ album.title }}"
+        class="img-fluid rounded shadow"
+        style="max-height: 400px; object-fit: cover; width: 100%;"
+      />
+    </div>
+  </div>
+
+  <!-- Description et actions -->
+  <div class="row mt-4">
+    <div class="col-md-8 offset-md-2">
+      <p class="lead text-muted text-justify">{{ album.description }}</p>
+      <div class="d-flex justify-content-between align-items-center">
+        <!-- Bouton J'aime -->
+        <button class="btn btn-danger" (click)="likeAlbum()">
+          <i class="bi bi-heart-fill"></i> J'aime ({{ likesCount }})
+        </button>
+
+        <!-- Retour aux albums -->
+        <a routerLink="/albums" class="btn btn-outline-secondary">
+          <i class="bi bi-arrow-left"></i> Retour aux albums
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
